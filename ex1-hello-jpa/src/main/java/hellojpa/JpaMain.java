@@ -1,12 +1,11 @@
 package hellojpa;
 
+import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
-import java.util.List;
-
-import antlr.collections.List;
 
 public class JpaMain {
 
@@ -27,6 +26,7 @@ public class JpaMain {
 //			Member member = new Member();
 //			member.setId(1L);
 //			member.setName("hello");
+			// 영속
 //			em.persist(member);
 			
 			// select
@@ -37,14 +37,28 @@ public class JpaMain {
 //			findMember.setName("helloJPA");
 			
 			// JPQL
-			List<Member> result =em.createQuery("select m from Member as m", Member.class)
-					.setFirstResult(5)
-					.setMaxResults(8)
-					.getResultList();
+//			List<Member> result =em.createQuery("select m from Member as m", Member.class)
+//					.setFirstResult(5)
+//					.setMaxResults(8)
+//					.getResultList();
+//			
+//			for (Member member : result) {
+//				System.out.println("member.name= " + member.getName());
+//			}
+//			회원 엔티티를 영속성 컨텍스트에서 분리, 준영속 상태
+			// em.detach(member);
 			
-			for (Member member : result) {
-				System.out.println("member.name= " + member.getName());
-			}
+			// 객체를 삭제한 상태(삭제)
+			// em.remove(member);
+			
+			Member member1 = new Member(150L, "A");
+			Member member2 = new Member(160L, "B");
+			System.out.println("================");
+			
+			em.persist(member1);
+			em.persist(member2);
+			
+			em.flush(); // 즉시 db에 쿼리반영 
 			
 			tx.commit();
 			
