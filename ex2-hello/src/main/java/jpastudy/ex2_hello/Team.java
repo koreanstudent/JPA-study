@@ -1,9 +1,13 @@
 package jpastudy.ex2_hello;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Team {
@@ -13,6 +17,19 @@ public class Team {
 	private Long teamId;
 
 	private String name;
+	
+	@OneToMany(mappedBy ="team")  // mamber에 team이랑 매핑
+	private List<Member> members = new ArrayList();
+	
+	
+
+	public List<Member> getMembers() {
+		return members;
+	}
+
+	public void setMembers(List<Member> members) {
+		this.members = members;
+	}
 
 	public Long getTeamId() {
 		return teamId;

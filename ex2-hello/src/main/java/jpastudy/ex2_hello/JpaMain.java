@@ -1,5 +1,7 @@
 package jpastudy.ex2_hello;
 
+import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
@@ -31,9 +33,16 @@ public class JpaMain {
 			member.setTeam(team); // pk -> fk 찾아서 넣어줌
 			em.persist(member);
 			
-			Member findMember = em.find(Member.class,member.getId());
+			em.flush(); // 즉시 db에 쿼리반영 
+			em.clear(); // 메모리 비우기
 			
-			Team findTeam= findMember.getTeam();
+			Member findMember = em.find(Member.class,member.getId());
+			List<Member> members = findMember.getTeam().getMembers(); // 양방향 매핑
+			
+			for (Member m : members) {
+				System.out.println("m = " + m.getUsername());
+			}
+			
 			
 			tx.commit();
 			
