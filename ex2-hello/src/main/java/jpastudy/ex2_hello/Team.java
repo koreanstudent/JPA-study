@@ -11,7 +11,7 @@ import javax.persistence.OneToMany;
 
 @Entity
 public class Team {
-
+ 
 	@Id @GeneratedValue
 	@Column(name = "TEAM_ID")
 	private Long teamId;
