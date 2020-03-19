@@ -21,7 +21,10 @@ public class Team {
 	@OneToMany(mappedBy ="team")  // mamber에 team이랑 매핑
 	private List<Member> members = new ArrayList();
 	
-	
+	public void addMember(Member member) {
+		member.setTeam(this);
+		members.add(member);
+	}
 
 	public List<Member> getMembers() {
 		return members;

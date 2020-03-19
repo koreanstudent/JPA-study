@@ -30,8 +30,12 @@ public class JpaMain {
 			
 			Member member = new Member();
 			member.setUsername("member1");
-			member.setTeam(team); // pk -> fk 찾아서 넣어줌
+//			member.changeTeam(team); // pk -> fk 찾아서 넣어줌
 			em.persist(member);
+			
+			team.addMember(member);
+			
+//			team.getMembers().add(member); // 양방향 매핑 시 순수한 객체 관계를 고려하면 항상 양쪽다 값을 입력해야 한다.
 			
 			em.flush(); // 즉시 db에 쿼리반영 
 			em.clear(); // 메모리 비우기

@@ -44,10 +44,16 @@ public class Member {
 	public Team getTeam() {
 		return team;
 	}
-
 	public void setTeam(Team team) {
 		this.team = team;
 	}
+	
+	// 로직이 있으면 set 보다 알아볼수있는 메서드로 만든다.
+//	public void changeTeam(Team team) {
+//		this.team = team;
+//		// 연관관계 편의 메소드
+//		team.getMembers().add(this);  // team.getMembers().add(member); // 양방향 매핑 시 순수한 객체 관계를 고려하면 항상 양쪽다 값을 입력해야 한다.
+//	}
 
 	
 	
