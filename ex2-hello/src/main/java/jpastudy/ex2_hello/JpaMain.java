@@ -23,7 +23,7 @@ public class JpaMain {
 		
 		try {
 
-			// 저장 
+			// 저장  
 			Team team = new Team();
 			team.setName("teamA");
 			em.persist(team);
