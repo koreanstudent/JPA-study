@@ -5,11 +5,14 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 
+import jpabook.jpashop.domain.Order;
+import jpabook.jpashop.domain.OrderItem;
+
 public class Jpamain {
 
 	public static void main(String[] args) {
  
-	//  하나만 생성해서 애플리케이션 전체에서 공유
+			//  하나만 생성해서 애플리케이션 전체에서 공유
 			EntityManagerFactory emf = Persistence.createEntityManagerFactory("hello2");
 			
 			// 요청이 올때마다 사용, 쓰레드간에 공유 x
@@ -21,6 +24,10 @@ public class Jpamain {
 			
 			try {
 	
+				Order order = new Order();
+				order.addOrderItem(new OrderItem());
+				
+				
 				tx.commit();
 				
 			} catch (Exception e) {
