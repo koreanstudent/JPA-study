@@ -13,6 +13,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -30,6 +31,10 @@ public class Order {
 	@JoinColumn(name ="MEMBER_ID")
 	private Member member;
 	
+	@OneToOne
+	@JoinColumn(name ="DELIVERY_ID")
+	private Delivery delivery;
+	
 	@OneToMany(mappedBy ="order")
 	private List<OrderItem> orderItems = new ArrayList<OrderItem>();
 	
@@ -43,8 +48,22 @@ public class Order {
 		orderItem.setOrder(this);
 	}
 	
-	
-	
+	public Delivery getDelivery() {
+		return delivery;
+	}
+
+	public void setDelivery(Delivery delivery) {
+		this.delivery = delivery;
+	}
+
+	public List<OrderItem> getOrderItems() {
+		return orderItems;
+	}
+
+	public void setOrderItems(List<OrderItem> orderItems) {
+		this.orderItems = orderItems;
+	}
+
 	public Long getId() {
 		return id;
 	}
@@ -52,9 +71,6 @@ public class Order {
 	public void setId(Long id) {
 		this.id = id;
 	}
-
-
-
 	public LocalDateTime getOrderDate() {
 		return orderDate;
 	}
