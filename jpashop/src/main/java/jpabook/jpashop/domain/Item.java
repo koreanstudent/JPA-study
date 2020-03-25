@@ -15,7 +15,7 @@ import javax.persistence.ManyToMany;
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn //테이블에 Entity 명이 들어간다. DTYPE (name="컬럼명") 변경 가능 
-public abstract class Item {
+public abstract class Item extends BaseEntity{
 
 	@Id @GeneratedValue
 	@Column(name = "ITEM_ID")
