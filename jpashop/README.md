@@ -23,3 +23,21 @@
 	- 테이블의 N:M 관계는 중간 테이블을 이용하여 1:N, N:1
 	- 실전에서는 중간 테이블이 단순하지 않아 @ManyToMany 사용 x
 	- @ManyToMany는 제약: 필드 추가 x, 엔티티 테이블 불일치
+
+# 주요 어노테이션
+	- @Inheritance(strategy=InheritanceType.XXX) 
+		• JOINED: 조인 전략 
+		• SINGLE_TABLE: 단일 테이블 전략 
+		• TABLE_PER_CLASS: 구현 클래스마다 테이블 전략 
+	• @DiscriminatorColumn(name=“DTYPE”) 
+	• @DiscriminatorValue(“XXX”) 테이블에 들어오는 자식 엔티티 명을 변경 할 수 있다.
+
+# @MappedSuperclass
+	- 상속관계 매핑 x
+	- 엔티티 x, 테이블과 매핑 x
+	- 부모 클래스를 상속 받는 자식 클래스에 매핑 정보만 제공
+	- 조회, 검색 불가(em.find())
+	- 직접 생성해서 사용할 일이 없으므로 추상 클래스 권장
+	- 테이블과 관계 없고, 단순히 엔티티가 공통으로 사용하는 매핑 정보를 모으는 역할
+	- 주로 등록일, 수정일, 등록자, 수정자 같은 전체 엔티티에서 공통으로 적용하는 정보를 모을 때 사용
+	- @Entity 클래스는 엔티티나 @MappedSuperclass로 지정한 클래스만 상속 가능
