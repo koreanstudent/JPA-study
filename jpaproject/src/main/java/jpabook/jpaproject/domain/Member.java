@@ -3,6 +3,7 @@ package jpabook.jpaproject.domain;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
@@ -26,6 +27,6 @@ public class Member {
 	@Embedded
 	private Address address;
 	
-	@OneToMany(mappedBy = "member" ) // order 테이블에 있는 member_id 매핑
+	@OneToMany(mappedBy = "member") // order 테이블에 있는 member_id 매핑
 	private List<Order> orders = new ArrayList<>();
 }
