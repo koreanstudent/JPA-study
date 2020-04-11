@@ -16,7 +16,7 @@ import lombok.RequiredArgsConstructor;
 @Service
 @Transactional(readOnly = true)
 @RequiredArgsConstructor
-public class OrdeService {
+public class OrderService {
 	
 	private final OrderRepository orderRepository;
 	private final MemberRepository memberRepository;

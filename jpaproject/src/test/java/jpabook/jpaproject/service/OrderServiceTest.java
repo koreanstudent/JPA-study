@@ -18,6 +18,7 @@ import jpabook.jpaproject.domain.Member;
 public class OrderServiceTest {
 
 	@Autowired EntityManager em;
+
 	
 	
 	
