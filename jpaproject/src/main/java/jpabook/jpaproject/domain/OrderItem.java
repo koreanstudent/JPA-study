@@ -9,11 +9,14 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 import jpabook.jpaproject.domain.item.Item;
+import lombok.AccessLevel;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
 @Getter @Setter
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class OrderItem {
 	
 	@Id @GeneratedValue
@@ -31,6 +34,12 @@ public class OrderItem {
 	private int orderPrice; // 주문 가격
 	
 	private int count; // 주문 수량
+	
+	// @NoArgsConstructor(access = AccessLevel.PROTECTED) lombok 제공 
+	//  new OrderItem() 제약을 둠
+//	protected OrderItem() {
+//		
+//	}
 	
 	// 생성 메서드
 	public static OrderItem createOrderItem(Item item, int orderPrice, int count) {
@@ -53,6 +62,8 @@ public class OrderItem {
 	public int getTotalPrice() {
 		return getOrderPrice() * getCount();
 	}
+
+
 	
 	
 
