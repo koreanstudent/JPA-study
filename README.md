@@ -104,7 +104,8 @@
 	- @RequiredArgsConstructor (초기화 되지 않은 모든 final 필드, @NonNull로 마크돼있는 모든 필드들에 대한 생성자를 자동으로 생성)
 	- @AllArgsConstructor (클래스에 존재하는 모든 필드에 대한 생성자를 자동으로 생성)
 	
-참고 : [lombok] https://projectlombok.org/
+# 참고 : 
+	 [lombok] https://projectlombok.org/
 	 [postman] https://www.postman.com/
 	 [thymeleaf] https://www.thymeleaf.org/
 	 [spring initializr] https://start.spring.io/
