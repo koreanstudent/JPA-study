@@ -82,7 +82,7 @@
 	- @NoArgsConstructor (파리미터가 없는 생성자를 생성,  final로 생성되어 있는 경우에는 필드를 초기화 할 수 없기 때문에 생성자를 만들 수 없고 에러가 발생)
 	- @RequiredArgsConstructor (초기화 되지 않은 모든 final 필드, @NonNull로 마크돼있는 모든 필드들에 대한 생성자를 자동으로 생성)
 	- @AllArgsConstructor (클래스에 존재하는 모든 필드에 대한 생성자를 자동으로 생성)
-	참고 : https://projectlombok.org/
+	참고 : <https://projectlombok.org/>
 	
 	
 
