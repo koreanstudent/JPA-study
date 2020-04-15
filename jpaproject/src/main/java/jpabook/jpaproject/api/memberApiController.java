@@ -1,8 +1,12 @@
 package jpabook.jpaproject.api;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 import javax.validation.Valid;
 import javax.validation.constraints.NotEmpty;
 
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -20,6 +24,26 @@ import lombok.RequiredArgsConstructor;
 public class memberApiController {
 
 	private final MemberService memberService;
+
+	/** * 조회 V2: 응답 값으로 엔티티가 아닌 별도의 DTO를 반환한다. */
+	@GetMapping("/api/v2/members")
+	public Result membersV2() {
+		List<Member> findMembers = memberService.findMembers(); // 엔티티 -> DTO 변환 
+		List<MemberDto> collect = findMembers.stream() .map(m -> new MemberDto(m.getName())).collect(Collectors.toList());
+		return new Result(collect);
+	}
+
+	@Data
+	@AllArgsConstructor
+	class Result<T> {
+		private T data;
+	}
+
+	@Data
+	@AllArgsConstructor
+	class MemberDto {
+		private String name;
+	}
 
 	// @RequestBody -> json 데이터를 Member안에 맞게 넣어준다.
 	// API를 만들기 위해서는 entity를 받아서도 안되고 내보내서도 안된다.
@@ -41,21 +65,21 @@ public class memberApiController {
 		Long id = memberService.join(member);
 		return new CreateMemberResponse(id);
 	}
-	
+
 	@PutMapping("/api/v2/members/{id}")
 	public UpdateMemberResponse updateMemberV2(@PathVariable("id") Long id,
-			 									@RequestBody @Valid UpdateMemberRequest request) {
+			@RequestBody @Valid UpdateMemberRequest request) {
 		memberService.update(id, request.getName());
 		Member findMember = memberService.findOne(id);
 		return new UpdateMemberResponse(findMember.getId(), findMember.getName());
-		
+
 	}
-	
+
 	@Data
 	static class UpdateMemberRequest {
 		private String name;
 	}
-	
+
 	@Data
 	@AllArgsConstructor
 	static class UpdateMemberResponse {
