@@ -1,3 +1,25 @@
+# 개발 환경
+- 자바 1.8 ↑
+- Gradle -빌드 배포 도구
+	- Mavn 빌드의 경우 XML로 라이브러리를 추가하고 사용할 수 있으나 Gradle의 경우에는 빌드스크립트를 통하여 사용할 어플리케이션 버전이나 라이브러리 항목등을 설정할 수 있다.
+	- 스크립트 언어로 구성되어 있기 때문에 XML과는 달리 변수선언, if, for 등의 로직을 추가하여 라이브러리를 관리할 수 있다.
+- JPA (Java Persistence API) 
+	- 현재 자바 진영의 ORM 기술 표준으로, 인터페이스의 모음이다
+	- 즉, 실제로 동작하는 것이 아니다.
+	- JPA 인터페이스를 구현한 대표적인 오픈소스가 Hibernate라고 할 수 있다.
+- Hibernate
+	- ORM 프레임워크, Open Source SW
+- H2 데이터베이스
+- thymeleaf
+	- 자바 라이브러리이며, 웹과 웹이 아닌 환경 양쪽에서 텍스트, HTML, XML, Javascript, CSS 그리고 텍스트를 생성할 수 있는 템플릿 엔진
+	
+# ORM(Object-relational mapping) 이란
+	- Object-relational mapping (객체 관계 매핑)
+	- 객체는 객체대로 설계하고, 관계형 데이터베이스는 관계형 데이터베이스대로 설계한다.
+	- ORM 프레임워크가 중간에서 매핑해준다.
+	- 대중적인 언어에는 대부분 ORM 기술이 존재한다.
+	- ORM은 객체와 RDB 두 기둥 위에 있는 기술 이다.
+	
 # 엔티티 매핑
  	- 객체와 테이블 매핑
  	- 데이터베이스 스키마 자동생성
@@ -63,7 +85,6 @@
 		- orphanRemoval = true 선언한 컬렉션에서 빠지면 삭제 된다.
 			
 	
-
 # 값 타입 컬렉션
 	- 값 타입을 하나 이상 저장할 때 사용
 	- @ElementCollection, @CollectionTable 사용
@@ -82,8 +103,11 @@
 	- @NoArgsConstructor (파리미터가 없는 생성자를 생성,  final로 생성되어 있는 경우에는 필드를 초기화 할 수 없기 때문에 생성자를 만들 수 없고 에러가 발생)
 	- @RequiredArgsConstructor (초기화 되지 않은 모든 final 필드, @NonNull로 마크돼있는 모든 필드들에 대한 생성자를 자동으로 생성)
 	- @AllArgsConstructor (클래스에 존재하는 모든 필드에 대한 생성자를 자동으로 생성)
-	참고 : <https://projectlombok.org/>
 	
+참고 : [lombok] https://projectlombok.org/
+	 [postman] https://www.postman.com/
+	 [thymeleaf] https://www.thymeleaf.org/
+	 [spring initializr] https://start.spring.io/
 	
 
 	
