@@ -18,7 +18,7 @@ public class OrderQueryRepository {
 		List<OrderQueryDto> result = findOrders();
 		
 		result.forEach(o -> {
-			List<Orderite>
+			List<Orderite> 
 		});
 		
 	}
