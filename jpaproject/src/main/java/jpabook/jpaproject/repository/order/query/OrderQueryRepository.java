@@ -71,4 +71,9 @@ public class OrderQueryRepository {
 				OrderQueryDto.class).getResultList();
 
 	}
+
+	public List<OrderQueryDto> findAllByDto_flat() {
+		
+		return null;
+	}
 }
